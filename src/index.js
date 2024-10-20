@@ -14,7 +14,7 @@ import bootstarp from 'bootstrap'
 import { Imagehandle } from './imagehandling/Imagehandling';
 import { EmiCalculator } from './EmiCalculator/emicalculato';
 import { TimeOut } from './Keyboardevents/Keyboard';
-import { Forms } from './Forms/forms';
+
 import { Fakestore } from './Fackestore/fackstoreapi';
 
 
@@ -23,12 +23,17 @@ import { CookieDemo } from './cookie/cookie-demo';
 import { ContextDemo } from './hooks/context-demo';
 import { ReducerDemo } from './hooks/reducer';
 import { CycleDemo, Login } from './hooks/useEffect';
+import {UserLogin } from './Class-component/class-component';
+
+import { CustomerLogin } from './customer/customer-login';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  
-    <CycleDemo/>
+   <React.StrictMode>
+    <CustomerLogin/>
+   </React.StrictMode>
+    
  
 );
 
