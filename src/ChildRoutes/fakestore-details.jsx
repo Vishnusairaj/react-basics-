@@ -1,41 +1,35 @@
 import axios from "axios";
-import { useEffect,useState } from "react";
-import { Link,useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom"
+import { Link } from "react-router-dom";
+
 
 
 export function FakestoreDetails(){
-    let params=useParams();
-    const[product,setProduct]=useState({id:0,title:'',category:'',price:0,description:'',rating:{rate:0,count:0},image:''});
+    let param=useParams();
+    const[products,setProducts]=useState([{id:0,title:'',image:'',price:0,describes:'',category:'',rating:{rate:0,count:0}}])
+    
 
     useEffect(()=>{
-        axios.get(`https://fakestoreapi.com/products/${params.id}`)
+        axios.get(`https://fakestoreapi.com/products/${param.id}`)
         .then(response=>{
-            setProduct(response.data);
+            setProducts(response.data);
         })
-    },[params.id])
+    },[])
+
 
     return(
         <div>
-            <h3>Details</h3>
-            <div className="card p-2 m-2" style={{width:'200px'}}>
-                <img className="card-img-top" src={product.image} height="120"/>
-                <div className="card-header">
-                    {product.title}
-                </div>
-                <div className="card-body">
-                    <dl>
-                        <dt>Price</dt>
-                        <dd>{product.price}</dd>
-                        <dt>Rating</dt>
-                        <dd>
-                            {product.rating.rate}<span className="bi bi-star-fill text-success"></span>[{product.rating.count}]
-                        </dd>
-                    </dl>
-                </div>
-                <div className="card-footer">
-                    <textarea rows="4" disabled value={product.description}></textarea>
-                </div>
-            </div>
+            <h2>Details</h2>
+            <dl style={{width:'200px'}}>
+                <img src={products.image} height="200" width="200"/>
+                <dt>Title</dt>
+                <dd>{products.title}</dd>
+                <dt>Price</dt>
+                <dd>{products.price}</dd>
+
+            </dl>
+            <Link to={`/products/${products.category}`}> Back to Home</Link>
         </div>
     )
 }

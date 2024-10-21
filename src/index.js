@@ -26,12 +26,13 @@ import { CycleDemo, Login } from './hooks/useEffect';
 import {UserLogin } from './Class-component/class-component';
 
 import { CustomerLogin } from './customer/customer-login';
+import { FakestoreIndex } from './ChildRoutes/fakestore-index';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
    <React.StrictMode>
-    <CustomerLogin/>
+    <FakestoreIndex/>
    </React.StrictMode>
     
  
